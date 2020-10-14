@@ -1,33 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
-class App extends Component {
-  constructor(){
-    super();
-    this.copyText = this.copyText.bind(this);
-
-    this.state = {
-      text: ''
-    }
-
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Un repetidor</h1>
-        <input type="text" onChange={this.copyText} placeholder="Empieza a escribir algo" />
-        <p className="repeater">{this.state.text}</p>
-      </div>
-    );
-  }
-
-  copyText(event){
-    this.setState({
-      text: event.target.value
-    });
-  }
-
+function App() {
+  const [text, setText] = useState("");
+  return (
+    <div>
+      <h1>Un repetidor</h1>
+      <input type="text" onChange={(e) => setText(e.target.value)} placeholder="Empieza a escribir algo" />
+      <p className="repeater">{text}</p>
+    </div>
+  );
 }
 
 export default App;
